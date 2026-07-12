@@ -4,21 +4,36 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="mb-4">
 
-<h4>RestaurantTable</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    <h2 class="fw-bold">
+        Edit Restaurant Table
+    </h2>
+
+    <p class="text-muted">
+        Update table information.
+    </p>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TableId" />
-            <div class="form-group">
+                    <div class="mb-3">
                 <label asp-for="Capacity" class="control-label"></label>
-                <input asp-for="Capacity" class="form-control" />
+                        <input asp-for="Capacity"
+                               class="form-control"
+                               type="number"
+                               min="1" />
                 <span asp-validation-for="Capacity" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="mb-3">
                 <label asp-for="Status" class="control-label"></label>
 
                 <select asp-for="Status"
@@ -28,16 +43,32 @@
 
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                    <div class="mb-3">
+                        <div class="mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-warning">
+
+                                Update Table
+
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary ms-2">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
             </div>
         </form>
-    </div>
-</div>
+            </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        </div>
+
+    </div>
+    </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

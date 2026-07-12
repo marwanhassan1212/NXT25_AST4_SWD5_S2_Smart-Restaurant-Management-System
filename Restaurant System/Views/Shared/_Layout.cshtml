@@ -10,31 +10,133 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm"
+             style="background:#1E293B; height:70px;">
+
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Restaurant_System</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+                <a class="navbar-brand fw-bold fs-4"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    🍽 Restaurant Management
+
+                </a>
+
+                <div class="d-flex align-items-center">
+
+                    <span class="text-light me-4">
+                        Welcome, Admin
+                    </span>
+
+                    <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center"
+                         style="width:40px;height:40px;">
+
+                        <span class="text-white fw-bold">
+                            M
+                        </span>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </nav>
+
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <div class="container-fluid p-0">
+
+        <div class="row g-0">
+
+            <!-- Sidebar -->
+
+            <div class="col-md-2">
+
+                <div class="bg-dark text-white p-4 shadow"
+                     style="min-height:calc(100vh - 70px); background:#0F172A !important;">
+
+                    <h5 class="mb-4 text-center">
+                        MENU
+                    </h5>
+
+                    <div class="d-grid gap-2">
+
+                        <a asp-controller="Home"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            📊 Dashboard
+                        </a>
+
+                        <a asp-controller="Roles"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            🛡️ Roles
+                        </a>
+
+
+                        <a asp-controller="Customers"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            👥 Customers
+                        </a>
+
+                        <a asp-controller="Employees"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            👨‍🍳 Employees
+                        </a>
+
+                        <a asp-controller="Categories"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            📂 Categories
+                        </a>
+
+                        <a asp-controller="MenuItems"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            🍔 Menu Items
+                        </a>
+
+                        <a asp-controller="Orders"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            🧾 Orders
+                        </a>
+
+                        <a asp-controller="OrderDetails"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            📦 Order Details
+                        </a>
+
+                        <a asp-controller="RestaurantTables"
+                           asp-action="Index"
+                           class="btn btn-outline-light text-start">
+                            🪑 Restaurant Tables
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Main -->
+
+            <div class="col-md-10 p-4">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+
     </div>
+    
 
     <footer class="border-top footer text-muted">
         <div class="container">

@@ -4,12 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    <div>
+        <h2 class="fw-bold">Customers</h2>
+
+        <p class="text-muted mb-0">
+            Manage all restaurant customers.
+        </p>
+    </div>
+
+    <a asp-action="Create" class="btn btn-primary">
+        + Create Customer
+    </a>
+
+</div>
+<div class="card shadow border-0">
+
+    <div class="card-body">
+<table class="table table-hover align-middle">
     <thead>
         <tr>
             <th>
@@ -18,7 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
-            <th></th>
+            <th class="text-end">
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -30,12 +45,37 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
-            </td>
+                <td class="text-end">
+
+                    <a asp-action="Edit"
+                       asp-route-id="@item.CustomerId"
+                       class="btn btn-warning btn-sm">
+
+                        Edit
+
+                    </a>
+
+                    <a asp-action="Details"
+                       asp-route-id="@item.CustomerId"
+                       class="btn btn-info btn-sm">
+
+                        Details
+
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.CustomerId"
+                       class="btn btn-danger btn-sm">
+
+                        Delete
+
+                    </a>
+
+                </td>
         </tr>
 }
     </tbody>
 </table>
+    </div>
+
+</div>

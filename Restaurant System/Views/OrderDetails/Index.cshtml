@@ -4,12 +4,34 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    <div>
+
+        <h2 class="fw-bold">
+            Order Details
+        </h2>
+
+        <p class="text-muted mb-0">
+            Manage items included in customer orders.
+        </p>
+
+    </div>
+
+    <a asp-action="Create"
+       class="btn btn-primary">
+
+        + Add Item
+
+    </a>
+
+</div>
+
+<div class="card shadow border-0">
+
+    <div class="card-body">
+
+        <table class="table table-hover align-middle">
     <thead>
         <tr>
             <th>
@@ -24,7 +46,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Order)
             </th>
-            <th></th>
+                    <th class="text-end" style="width:220px;">
+                        Actions
+                    </th>
         </tr>
     </thead>
     <tbody>
@@ -34,7 +58,7 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            @item.UnitPrice.ToString("0.00")
             </td>
             <td>
                     @Html.DisplayFor(modelItem => item.Item.ItemName)
@@ -42,20 +66,42 @@
             <td>
                     @Html.DisplayFor(modelItem => item.Order.OrderDisplay)
             </td>
-            <td>
-                    <a asp-action="Edit"
-                       asp-route-orderId="@item.OrderId"
-                       asp-route-itemId="@item.ItemId">Edit</a> |
+            
+                        <td class="text-end">
 
-                    <a asp-action="Details"
-                       asp-route-orderId="@item.OrderId"
-                       asp-route-itemId="@item.ItemId">Details</a> |
+                            <a asp-action="Edit"
+                               asp-route-orderId="@item.OrderId"
+                               asp-route-itemId="@item.ItemId"
+                               class="btn btn-warning btn-sm">
 
-                    <a asp-action="Delete"
-                       asp-route-orderId="@item.OrderId"
-                       asp-route-itemId="@item.ItemId">Delete</a>
-            </td>
+                                Edit
+
+                            </a>
+
+                            <a asp-action="Details"
+                               asp-route-orderId="@item.OrderId"
+                               asp-route-itemId="@item.ItemId"
+                               class="btn btn-info btn-sm">
+
+                                Details
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-orderId="@item.OrderId"
+                               asp-route-itemId="@item.ItemId"
+                               class="btn btn-danger btn-sm">
+
+                                Delete
+
+                            </a>
+
+                        </td>
+       
         </tr>
 }
     </tbody>
 </table>
+    </div>
+
+</div>

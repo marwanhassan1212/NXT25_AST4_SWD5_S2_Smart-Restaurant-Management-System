@@ -4,18 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    <h2 class="fw-bold">
+        Categories
+    </h2>
+
+    <a asp-action="Create" class="btn btn-success">
+        + Add Category
+    </a>
+
+</div>
+
+<table class="table table-hover table-striped shadow-sm">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.CategoryName)
             </th>
-            <th></th>
+            <th class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -24,11 +31,27 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
-            </td>
+                <td class="text-center">
+
+                    <a asp-action="Edit"
+                       asp-route-id="@item.CategoryId"
+                       class="btn btn-warning btn-sm me-1">
+                        Edit
+                    </a>
+
+                    <a asp-action="Details"
+                       asp-route-id="@item.CategoryId"
+                       class="btn btn-info btn-sm text-white me-1">
+                        Details
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.CategoryId"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </td>
         </tr>
 }
     </tbody>

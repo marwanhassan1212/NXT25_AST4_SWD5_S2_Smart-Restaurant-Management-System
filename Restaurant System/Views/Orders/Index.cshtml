@@ -4,12 +4,34 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    <div>
+
+        <h2 class="fw-bold">
+            Orders
+        </h2>
+
+        <p class="text-muted mb-0">
+            Manage customer orders.
+        </p>
+
+    </div>
+
+    <a asp-action="Create"
+       class="btn btn-primary">
+
+        + Create Order
+
+    </a>
+
+</div>
+
+<div class="card shadow border-0">
+
+    <div class="card-body">
+
+        <table class="table table-hover align-middle">
     <thead>
         <tr>
             <th>
@@ -30,20 +52,37 @@
             <th>
                 @Html.DisplayNameFor(model => model.Table)
             </th>
-            <th></th>
+                    <th class="text-end">
+                        Actions
+                    </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
+                            @item.OrderDate.ToString("dd/MM/yyyy")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderStatus)
+                            @if (item.OrderStatus == "Pending")
+                            {
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            }
+                            else if (item.OrderStatus == "Completed")
+                            {
+                                <span class="badge bg-success">Completed</span>
+                            }
+                            else if (item.OrderStatus == "Cancelled")
+                            {
+                                <span class="badge bg-danger">Cancelled</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">@item.OrderStatus</span>
+                            }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
+                            @item.TotalAmount.ToString("0.00")
             </td>
             <td>
                     @Html.DisplayFor(modelItem => item.Customer.FullName)
@@ -54,12 +93,37 @@
             <td>
                     @Html.DisplayFor(modelItem => item.Table.TableDisplay)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
+                        <td class="text-end">
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.OrderId"
+                               class="btn btn-warning btn-sm">
+
+                                Edit
+
+                            </a>
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.OrderId"
+                               class="btn btn-info btn-sm">
+
+                                Details
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.OrderId"
+                               class="btn btn-danger btn-sm">
+
+                                Delete
+
+                            </a>
+
+                        </td>
         </tr>
 }
     </tbody>
 </table>
+    </div>
+
+</div>
