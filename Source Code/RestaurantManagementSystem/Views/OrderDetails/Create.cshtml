@@ -1,0 +1,89 @@
+﻿@model RestaurantManagementSystem.Models.OrderDetail
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Add Order Item
+    </h2>
+
+    <p class="text-muted">
+        Add a new item to an order.
+    </p>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="OrderId" class="form-label">
+                            Order
+                        </label>
+                        <select asp-for="OrderId" class="form-control" asp-items="ViewBag.OrderId"></select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ItemId" class="form-label">
+                            Menu Item
+                        </label>
+                        <select asp-for="ItemId" class="form-control" asp-items="ViewBag.ItemId"></select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Quantity" class="form-label"></label>
+                        <input asp-for="Quantity"
+                               class="form-control"
+                               type="number"
+                               min="1" />
+                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="UnitPrice" class="control-label"></label>
+                        <input asp-for="UnitPrice"
+                               class="form-control"
+                               type="number"
+                               step="0.01"
+                               min="0" />
+                        <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <div class="mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-success">
+
+                                Save Item
+
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary ms-2">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

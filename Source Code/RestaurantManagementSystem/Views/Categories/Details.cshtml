@@ -1,0 +1,62 @@
+﻿@model RestaurantManagementSystem.Models.Category
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Category Details
+    </h2>
+
+    <p class="text-muted">
+        View category information.
+    </p>
+
+</div>
+<div class="row justify-content-center">
+
+    <div class="col-lg-7">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <dl class="row">
+                    <dt class="col-sm-4 fw-bold">
+                        @Html.DisplayNameFor(model => model.CategoryName)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.CategoryName)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-4 text-center">
+
+    <a asp-action="Edit"
+       asp-route-id="@Model?.CategoryId"
+       class="btn btn-warning">
+
+        Edit
+
+    </a>
+
+    <a asp-action="Delete"
+       asp-route-id="@Model?.CategoryId"
+       class="btn btn-danger ms-2">
+
+        Delete
+
+    </a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary ms-2">
+
+        Back
+
+    </a>
+
+</div>

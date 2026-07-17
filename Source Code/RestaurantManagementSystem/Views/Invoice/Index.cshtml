@@ -1,0 +1,146 @@
+﻿@model RestaurantManagementSystem.Models.Order
+
+@{
+    ViewData["Title"] = "Invoice";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-body p-5" id="invoice">
+
+            <div class="d-flex justify-content-between">
+
+                <div>
+
+                    <h2 class="fw-bold text-primary">
+                        Restaurant Management System
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Minya - Egypt
+                    </p>
+
+                    <p class="text-muted">
+                        +20 100 000 0000
+                    </p>
+
+                </div>
+
+                <div class="text-end">
+
+                    <h3 class="fw-bold">
+                        INVOICE
+                    </h3>
+
+                    <h5 class="text-secondary">
+                        #@Model.OrderId
+                    </h5>
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <h5>Customer</h5>
+
+                    <p>@Model.Customer.FullName</p>
+
+                    <h5>Table</h5>
+
+                    <p>@Model.Table.TableDisplay</p>
+
+                </div>
+
+                <div class="col-md-6 text-end">
+
+                    <h5>Cashier</h5>
+
+                    <p>@Model.Employee.FullName</p>
+
+                    <h5>Date</h5>
+
+                    <p>@Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</p>
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <table class="table table-bordered align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Item</th>
+
+                        <th width="120">Qty</th>
+
+                        <th width="150">Price</th>
+
+                        <th width="150">Total</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model.OrderDetails)
+                    {
+                        <tr>
+
+                            <td>@item.Item.ItemName</td>
+
+                            <td>@item.Quantity</td>
+
+                            <td>@item.UnitPrice.ToString("N2")</td>
+
+                            <td>@((item.Quantity * item.UnitPrice).ToString("N2"))</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+            <div class="text-end">
+
+                <h3 class="fw-bold text-success">
+
+                    Total :
+                    @Model.TotalAmount.ToString("N2") EGP
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+
+        <a asp-action="DownloadPdf"
+           asp-route-id="@Model.OrderId"
+           class="btn btn-danger btn-lg ms-2">
+
+            <i class="bi bi-file-earmark-pdf"></i>
+
+            Download PDF
+
+        </a>
+
+    </div>
+
+</div>
+

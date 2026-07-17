@@ -1,0 +1,60 @@
+﻿@model RestaurantManagementSystem.Models.Role
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Create Role
+    </h2>
+
+    <p class="text-muted">
+        Add a new role to the system.
+    </p>
+
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="RoleName" class="control-label"></label>
+                        <input asp-for="RoleName" class="form-control" />
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <div class="mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-success">
+
+                                Save Role
+
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary ms-2">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
