@@ -1,0 +1,85 @@
+﻿@model RestaurantManagementSystem.Models.OrderDetail
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Order Item Details
+    </h2>
+
+    <p class="text-muted">
+        View order item information.
+    </p>
+
+</div>
+<hr />
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <dl class="row">
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.UnitPrice)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Model.UnitPrice.ToString("0.00")
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        Menu Item
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Item.ItemName)
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        Order
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Order.OrderDisplay)
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="mt-4 text-center">
+
+    <a asp-action="Edit"
+       asp-route-orderId="@Model.OrderId"
+       asp-route-itemId="@Model.ItemId"
+       class="btn btn-warning">
+
+        Edit
+
+    </a>
+
+    <a asp-action="Delete"
+       asp-route-orderId="@Model.OrderId"
+       asp-route-itemId="@Model.ItemId"
+       class="btn btn-danger ms-2">
+
+        Delete
+
+    </a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary ms-2">
+
+        Back
+
+    </a>
+
+</div>

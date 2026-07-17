@@ -1,0 +1,101 @@
+﻿@model RestaurantManagementSystem.Models.MenuItem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Menu Item Details
+    </h2>
+
+    <p class="text-muted">
+        View menu item information.
+    </p>
+
+</div>
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <dl class="row">
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.ItemName)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.ItemName)
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.AvailabilityStatus)
+                    </dt>
+                    <dd class="col-sm-9">
+
+                        @if (Model.AvailabilityStatus)
+                        {
+                            <span class="badge bg-success">Available</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Unavailable</span>
+                        }
+
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        Category
+                    </dt>
+
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Category.CategoryName)
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div>
+    <div class="mt-4 text-center">
+
+        <a asp-action="Edit"
+           asp-route-id="@Model?.ItemId"
+           class="btn btn-warning">
+
+            Edit
+
+        </a>
+
+        <a asp-action="Delete"
+           asp-route-id="@Model?.ItemId"
+           class="btn btn-danger ms-2">
+
+            Delete
+
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary ms-2">
+
+            Back
+
+        </a>
+
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model RestaurantManagementSystem.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Add New Category
+    </h2>
+
+    <p class="text-muted">
+        Fill in the category information below.
+    </p>
+
+</div>
+
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="CategoryName" class="control-label"></label>
+                        <input asp-for="CategoryName" class="form-control" />
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="mt-4">
+
+                            <button type="submit" class="btn btn-success">
+                                Save Category
+                            </button>
+
+                            <a asp-action="Index" class="btn btn-secondary ms-2">
+                                Cancel
+                            </a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

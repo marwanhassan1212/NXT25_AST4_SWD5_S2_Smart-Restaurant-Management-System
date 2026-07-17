@@ -1,0 +1,64 @@
+﻿@model RestaurantManagementSystem.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Edit Category
+    </h2>
+
+    <p class="text-muted">
+        Update the category information.
+    </p>
+
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CategoryId" />
+                    <div class="form-group">
+                        <label asp-for="CategoryName" class="control-label"></label>
+                        <input asp-for="CategoryName" class="form-control" />
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-warning">
+
+                                Update Category
+
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary ms-2">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

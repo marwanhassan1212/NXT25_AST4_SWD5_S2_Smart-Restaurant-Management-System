@@ -1,0 +1,216 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<RestaurantManagementSystem.Models.MenuItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card shadow-lg border-0 mb-4">
+
+    <div class="card-body d-flex justify-content-between align-items-center">
+
+        <div>
+
+            <h2 class="fw-bold mb-1">
+
+                <i class="bi bi-cup-hot-fill text-primary"></i>
+
+                Menu Items
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage restaurant menu items.
+
+            </p>
+
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-primary btn-lg">
+
+            <i class="bi bi-plus-circle"></i>
+
+            Add Menu Item
+
+        </a>
+
+    </div>
+
+</div>
+<partial name="_Alerts" />
+
+<div class="card shadow border-0">
+
+    <div class="card-body">
+        <form asp-action="Index"
+              method="get"
+              class="row g-3 align-items-end mb-4">
+
+            <div class="col-md-4">
+
+                <input type="text"
+                       name="searchString"
+                       value="@ViewBag.SearchString"
+                       class="form-control"
+                       placeholder="🔍 Search Menu Item..." />
+
+            </div>
+            <div class="col-md-3">
+
+                <select name="categoryId"
+                        asp-items="ViewBag.CategoryId"
+                        class="form-select">
+
+                    <option value="">All Categories</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-auto d-flex gap-2">
+
+                <button class="btn btn-primary px-4">
+
+                    Search
+
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-outline-secondary px-4">
+
+                    Reset
+
+                </a>
+
+            </div>
+
+        </form>
+
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewBag.NameSort"
+                           asp-route-searchString="@ViewBag.SearchString"
+                           class="text-decoration-none text-light">
+
+                            Item Name
+
+                        </a>
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewBag.NameSort"
+                           asp-route-searchString="@ViewBag.SearchString"
+                           class="text-decoration-none text-light">
+
+                            Price
+
+                        </a>
+                    </th>
+                    <th>
+                        Availability Status
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th class="text-center" style="width:180px;">
+
+                        <i class="bi bi-gear-fill me-1"></i>
+
+                        Actions
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ItemName)
+                        </td>
+                        <td style="max-width:250px;">
+
+                            @(item.Description?.Length > 45
+                                                    ? item.Description.Substring(0, 45) + "..."
+                                                    : item.Description)
+
+                    </td>
+                    <td>
+                        @item.Price.ToString("0.00") EGP
+                    </td>
+                    <td>
+
+                        @if (item.AvailabilityStatus)
+                            {
+                                <span class="badge bg-success px-3 py-2">
+                                    Available
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger px-3 py-2">
+                                    Unavailable
+                                </span>
+                            }
+
+                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                        <td class="text-center">
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.ItemId"
+                               class="btn btn-warning btn-sm rounded-pill me-2"
+                               title="Edit">
+
+                                <i class="bi bi-pencil-square"></i>
+
+                            </a>
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.ItemId"
+                               class="btn btn-info btn-sm rounded-pill me-2 text-white"
+                               title="Details">
+
+                                <i class="bi bi-eye"></i>
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.ItemId"
+                               class="btn btn-danger btn-sm rounded-pill"
+                               title="Delete">
+
+                                <i class="bi bi-trash"></i>
+
+                            </a>
+
+                        </td>
+                    </tr>
+                                }
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center mt-4">
+
+            @Html.PagedListPager(
+            Model,
+            page => Url.Action("Index", new
+            {
+                page,
+                searchString = ViewBag.SearchString
+            }))
+
+        </div>
+    </div>
+
+</div>

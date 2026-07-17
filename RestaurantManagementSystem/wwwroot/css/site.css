@@ -1,0 +1,281 @@
+/* Google Font */
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body */
+
+body {
+    background: #F4F7FE;
+    color: #1E293B;
+}
+
+/* Navbar */
+
+.navbar {
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+body {
+    padding-top: 70px;
+}
+
+/* Sidebar */
+
+.sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 16.666667%;
+    height: calc(100vh - 70px);
+    background: #0F172A;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+    .sidebar::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 20px;
+    }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+/* Cards */
+
+.card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+/* Buttons */
+
+.btn {
+    border-radius: 12px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+/* Table */
+
+.table {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background: #0F172A;
+        color: white;
+    }
+
+.table-hover tbody tr:hover {
+    background: #EEF4FF;
+}
+
+/* Inputs */
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    min-height: 45px;
+    box-shadow: none;
+    border: 1px solid #D9E2EC;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #2563EB;
+        box-shadow: 0 0 10px rgba(37,99,235,.2);
+    }
+
+/* Search Card */
+
+.search-card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+    margin-bottom: 20px;
+}
+
+/* Page Title */
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: gray;
+    margin-top: -8px;
+}
+
+/* Pagination */
+
+.pagination {
+    justify-content: center;
+}
+
+    .pagination .page-link {
+        border-radius: 10px;
+        margin: 0 3px;
+        color: #2563EB;
+    }
+
+    .pagination .active .page-link {
+        background: #2563EB;
+        border-color: #2563EB;
+    }
+
+/* Footer */
+
+footer {
+    background: white;
+    padding: 15px;
+}
+
+/* Animation */
+
+.fade-card {
+    animation: fade .4s ease;
+}
+
+@keyframes fade {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.pagination {
+    justify-content: center;
+    gap: 10px;
+}
+
+    .pagination li {
+        list-style: none;
+    }
+
+        .pagination li a,
+        .pagination li span {
+            border-radius: 10px !important;
+            padding: 10px 16px;
+            border: 1px solid #dee2e6;
+            color: #1E293B;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+            .pagination li a:hover {
+                background: #2563EB;
+                color: white;
+                border-color: #2563EB;
+            }
+
+    .pagination .active span {
+        background: #2563EB;
+        border-color: #2563EB;
+        color: white;
+    }
+
+
+
+
+.menu-title{
+
+    color:#64748B;
+
+    letter-spacing:1px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+
+    display:block;
+}
+
+.menu-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#CBD5E1;
+
+    text-decoration:none;
+
+    padding:11px 15px;
+
+    border-radius:12px;
+
+    margin-bottom:8px;
+
+    transition:.25s;
+}
+
+.menu-link i{
+
+    font-size:18px;
+
+    width:22px;
+
+    text-align:center;
+}
+
+.menu-link:hover{
+
+    background:#2563EB;
+
+    color:white;
+
+    transform:translateX(6px);
+}
+
+.menu-link.active{
+
+    background:#2563EB;
+
+    color:white;
+}
+.order-items-container {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+    .order-items-container::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .order-items-container::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 20px;
+    }

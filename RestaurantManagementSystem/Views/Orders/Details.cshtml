@@ -1,0 +1,113 @@
+﻿@model RestaurantManagementSystem.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="mb-4">
+
+    <h2 class="fw-bold">
+        Order Details
+    </h2>
+
+    <p class="text-muted">
+        View order information.
+    </p>
+
+</div>
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body p-4">
+                <dl class="row">
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.OrderDate)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Model.OrderDate.ToString("dd/MM/yyyy")
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.OrderStatus)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @if (Model.OrderStatus == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                        else if (Model.OrderStatus == "Completed")
+                        {
+                            <span class="badge bg-success">Completed</span>
+                        }
+                        else if (Model.OrderStatus == "Cancelled")
+                        {
+                            <span class="badge bg-danger">Cancelled</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@Model.OrderStatus</span>
+                        }
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.TotalAmount)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Model.TotalAmount.ToString("0.00")
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.Customer)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Customer.FullName)
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.Employee)
+                    </dt>
+                    <dd class="col-sm-9">
+
+                        @Html.DisplayFor(model => model.Employee.FullName)
+                    </dd>
+                    <dt class="col-sm-3 fw-bold">
+                        @Html.DisplayNameFor(model => model.Table)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Table.TableDisplay)
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div>
+    <div class="mt-4 text-center">
+
+        <a asp-action="Edit"
+           asp-route-id="@Model?.OrderId"
+           class="btn btn-warning">
+
+            Edit
+
+        </a>
+
+        <a asp-action="Delete"
+           asp-route-id="@Model?.OrderId"
+           class="btn btn-danger ms-2">
+
+            Delete
+
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary ms-2">
+
+            Back
+
+        </a>
+
+    </div>
+</div>
